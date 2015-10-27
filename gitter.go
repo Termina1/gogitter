@@ -35,6 +35,7 @@ func GetSendMessageStream(token string, roomId string) chan string {
       data, _ := ioutil.ReadAll(resp.Body)
       message := GitterMessage{}
       json.Unmarshal(data, &message)
+      in <- message.Id
     }
   }()
   return in
