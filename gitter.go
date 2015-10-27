@@ -7,7 +7,6 @@ import (
   "net/http"
   "io/ioutil"
   "strconv"
-  "fmt"
 )
 
 const streamingDomain = "https://stream.gitter.im/"
@@ -36,7 +35,6 @@ func GetSendMessageStream(token string, roomId string) chan string {
       data, _ := ioutil.ReadAll(resp.Body)
       message := GitterMessage{}
       json.Unmarshal(data, &message)
-      fmt.Println(message)
     }
   }()
   return in
